@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { IUsers } from './IUsers';
 
@@ -11,5 +11,8 @@ export class UsersController {
     return this.usersService.getUsers();
   }
 
-  
+  @Put()
+  putUsers(user: IUsers): number {
+    return this.usersService.pushUser(user);
+  }
 }
