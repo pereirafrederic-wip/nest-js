@@ -15,10 +15,10 @@ import { CreateUserDto } from './db/create-user.dto';
 import { IUsers } from './db/IUsers';
 
 //swagger
-import { ApiUseTags, ApiResponse } from '@nestjs/swagger';
+//import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('users')
-@ApiUseTags('todos')
+//@ApiUseTags('todos')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -41,10 +41,10 @@ export class UsersController {
   }
 
   @Post()
-  @ApiResponse({
+  /* @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
-  })
+  })*/
   public async create(
     @Body() user: CreateUserDto,
     //, @Response() res
