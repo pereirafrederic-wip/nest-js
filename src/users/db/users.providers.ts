@@ -5,7 +5,7 @@ export const UsersProviders = [
   {
     provide: 'USER_MODEL',
     useFactory: (connection: Connection) =>
-      connection.model('user', UserSchema),
+      connection.model('USER', UserSchema),
     inject: ['DATABASE_CONNECTION'],
   },
 ];
