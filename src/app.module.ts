@@ -1,12 +1,31 @@
-import { Module } from '@nestjs/common';
+import { Module, RequestMethod } from '@nestjs/common';
+
+//partie app
 import { AppController } from './app.controller';
-import { UsersController } from './users/users.controller';
 import { AppService } from './app.service';
-import { UsersService } from './users/users.service';
+
+// module users
+import { UsersModule } from './users/users.module';
+
+//partie db
+import { MongooseModule } from '@nestjs/mongoose';
+
+//partie middle ware
+import { NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 
 @Module({
-  imports: [],
-  controllers: [AppController, UsersController],
-  providers: [AppService, UsersService],
+  imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost/nest')],
+  controllers: [AppController],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(
+        //cors(), helmet(),
+        LoggerMiddleware,
+      )
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
