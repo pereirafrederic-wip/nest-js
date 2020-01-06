@@ -10,6 +10,10 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
+//db
+import { CreateUserDto } from './db/create-user.dto';
+import { IUsers } from './db/IUsers';
+
 //swagger
 import { ApiUseTags, ApiResponse } from '@nestjs/swagger';
 
@@ -41,7 +45,7 @@ export class UsersController {
   }
 
   @Put()
-  public async update(@Body() user: CreateUserDto, @Response() res) {
+  public async update(@Body() user: IUsers, @Response() res) {
     const userUpdated = await this.usersService.update(user);
     return res.status(HttpStatus.OK).json(userUpdated);
   }
