@@ -17,7 +17,7 @@ async function bootstrap() {
     .setTitle('Users example')
     .setDescription('The Users API description')
     .setVersion('1.0')
-    .addTag('users')
+    //.addTag('users')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
