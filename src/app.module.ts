@@ -13,11 +13,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 //partie middle ware
 import { NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost/users')],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DatabaseModule],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
