@@ -25,6 +25,7 @@
     "@nestjs/mongoose": "6.1.2",
     "@nestjs/platform-express": "^6.8.0",
     "@nestjs/swagger": "4.1.2",
+    "@types/mongoose": "5.5.38",
     "class-transformer": "0.2.3",
     "class-validator": "0.11.0",
     "mongoose": "5.8.4",

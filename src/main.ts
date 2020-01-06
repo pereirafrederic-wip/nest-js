@@ -12,6 +12,7 @@ async function bootstrap() {
 
   //middleware
   app.use(GlobalMiddleware);
+  app.enableCors();
 
   const options = new DocumentBuilder()
     .setTitle('Users example')
